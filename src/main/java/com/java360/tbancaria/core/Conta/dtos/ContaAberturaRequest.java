@@ -15,6 +15,8 @@ public record ContaAberturaRequest (
 
         @NotNull(message = "O saldo inicial não pode ser nulo.")
         @PositiveOrZero(message = "O saldo inicial deve ser maior ou igual a zero.")
-        BigDecimal saldoInicial
+        BigDecimal saldoInicial,
+
+        BigDecimal salarioPoupanca
 
 )  {}

@@ -29,6 +29,6 @@ public class Conta {
     private BigDecimal saldo;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_pessoa")
-    private PessoaFisica pessoa;
+    @JoinColumn(name = "id_titular")
+    private PessoaFisica titular;
 }
