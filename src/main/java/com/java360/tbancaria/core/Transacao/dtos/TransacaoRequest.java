@@ -11,7 +11,7 @@ public record TransacaoRequest (
         Long idContaOrigem,
 
         @NotNull(message = "A conta de destino é obrigatória.")
-        Long idContaDestinatario,
+        Long idContaDestino,
 
         @NotNull(message = "O valor não pode ser nulo.")
         @Positive(message = "O valor deve ser superior a 0.")

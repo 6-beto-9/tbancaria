@@ -22,20 +22,20 @@ public class Transacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_transacao")
-    private Long id;
+    private Long idTransacao;
 
     @Column(name = "valor", nullable = false, precision = 12, scale = 2)
     private BigDecimal valor;
 
     @Column(name = "data_hora", nullable = false)
-    private LocalDateTime dataHora;
+    private LocalDateTime dataTransacao;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_conta_origem", nullable = false)
     private Conta contaOrigem;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id_conta_destinatario", nullable = false)
-    private Conta contaDestinatario;
+    @JoinColumn(name = "id_conta_destino", nullable = false)
+    private Conta contaDestino;
 
 }

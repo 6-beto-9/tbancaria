@@ -51,7 +51,7 @@ public class ContaService {
             corrente.setTitular(titular);
             corrente.setSaldo(request.saldoInicial());
             corrente.setLimiteConta(new BigDecimal("1000.00")); // Limite de crédito padrão
-            corrente.setTarifaMensal(new BigDecimal("20.00")); // Tarifa de manutenção padrão
+            corrente.setTarifaMensal(new BigDecimal("10.00")); // Tarifa de manutenção padrão
 
             // Salvo no banco usando o mesmo repository comum
             contaSalva = contaRepository.save(corrente);
@@ -59,7 +59,7 @@ public class ContaService {
 
         // Monto e retorna o Response com os dados finais consolidados
         return new ContaResponse(
-                contaSalva.getId_conta(), // O ID gerado pelo banco para a nova conta
+                contaSalva.getIdConta(), // O ID gerado pelo banco para a nova conta
                 titular.getNome(),       // O nome do dono que busco
                 request.tipoConta().toUpperCase(), // O tipo da conta formatado bonitinho
                 contaSalva.getSaldo()    // O saldo inicial da conta

@@ -23,7 +23,7 @@ public class Conta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_conta")
-    private Long id_conta;
+    private Long idConta;
 
     @Column(name = "saldo", nullable = false, length = 12)
     private BigDecimal saldo;

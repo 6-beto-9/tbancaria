@@ -7,7 +7,7 @@ public record TransacaoResponse (
 
         Long idTransacao,
         BigDecimal valor,
-        LocalDateTime dataHora,
+        LocalDateTime dataTransacao,
         Long idContaOrigem,
         Long idContaDestinatario
 
