@@ -61,4 +61,15 @@ public class PessoaFisicaService {
             // Mando o repository apagar direto pelo ID (Gera um DELETE FROM no banco)
             pessoaFisicaRepository.deleteById(id);
         }
+
+    public PessoaFisicaResponse buscarPorId(Long id) {
+        PessoaFisica pessoa = pessoaFisicaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Cliente não encontrado"));
+        return new PessoaFisicaResponse(
+                pessoa.getId_pessoa(),
+                pessoa.getNome(),
+                pessoa.getCpf(),
+                pessoa.getEmail()
+        ); // converte para o DTO de resposta
+    }
 }

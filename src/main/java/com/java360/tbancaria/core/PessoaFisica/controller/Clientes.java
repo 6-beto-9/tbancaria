@@ -38,4 +38,10 @@ public class Clientes {
         pessoaService.deletarPessoa(id);
         return ResponseEntity.noContent().build(); // Retorno HTTP 204 No Content (padrão para exclusão com sucesso)
     }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<PessoaFisicaResponse> buscarPorId(@PathVariable Long id) {
+        PessoaFisicaResponse response = pessoaService.buscarPorId(id);
+        return ResponseEntity.ok(response);
+    }
 }

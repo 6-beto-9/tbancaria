@@ -16,8 +16,8 @@ import lombok.Setter;
 public class PessoaFisica {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
-    @Column(name = "id_pessoa", nullable = false, length = 8)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_pessoa", nullable = false)
     private Long id_pessoa;
 
     @Column(name = "nome", nullable = false, length = 50)
