@@ -18,5 +18,4 @@ public record ContaAberturaRequest (
         BigDecimal saldoInicial,
 
         BigDecimal salarioPoupanca
-
 )  {}

@@ -17,7 +17,7 @@ public class Transacoes {
     private final TransacaoService transacaoService;
 
     @PostMapping
-    public ResponseEntity<TransacaoResponse> realizarTransferencia(@Valid @RequestBody TransacaoRequest request) {
+    public ResponseEntity<TransacaoResponse> realizarTransacao(@Valid @RequestBody TransacaoRequest request) {
         TransacaoResponse response = transacaoService.transferirValor(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }

@@ -31,4 +31,7 @@ public class Conta {
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "id_titular")
     private PessoaFisica titular;
+
+    @Column(name = "tipo_conta", insertable = false, updatable = false)
+    private String tipoConta;
 }

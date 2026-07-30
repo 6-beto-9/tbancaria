@@ -65,4 +65,38 @@ public class ContaService {
                 contaSalva.getSaldo()    // O saldo inicial da conta
         );
     }
+
+    public ContaResponse buscarPorId(Long id) {
+        Conta conta = contaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Conta não encontrada."));
+
+        return new ContaResponse(
+                conta.getIdConta(),
+                conta.getTitular().getNome(),
+                conta.getTipoConta(),
+                conta.getSaldo()
+        );
+    }
+
+    public ContaResponse atualizarSaldo(Long id, BigDecimal novoSaldo) {
+        Conta conta = contaRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Conta não encontrada."));
+
+        conta.setSaldo(novoSaldo);
+        Conta contaAtualizada = contaRepository.save(conta);
+
+        return new ContaResponse(
+                contaAtualizada.getIdConta(),
+                contaAtualizada.getTitular().getNome(),
+                contaAtualizada.getTipoConta(),
+                contaAtualizada.getSaldo()
+        );
+    }
+
+    public void deletarPorId(Long id) {
+        if (!contaRepository.existsById(id)) {
+            throw new RuntimeException("Conta não encontrada com o ID: " + id);
+        }
+        contaRepository.deleteById(id);
+    }
 }

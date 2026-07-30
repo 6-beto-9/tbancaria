@@ -25,10 +25,7 @@ public class Clientes {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaFisicaResponse> atualizar(
-            @PathVariable Long id, // Capturo o ID que veio na URL
-            @Valid @RequestBody PessoaFisicaRequest request) {
-
+    public ResponseEntity<PessoaFisicaResponse> atualizar(@PathVariable Long id, @Valid @RequestBody PessoaFisicaRequest request) { // Capturo o ID que veio na URL
         PessoaFisicaResponse response = pessoaService.atualizarPessoa(id, request);
         return ResponseEntity.ok(response); // Retorno HTTP 200 OK com os dados atualizados
     }
