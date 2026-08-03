@@ -5,7 +5,7 @@ import java.time.LocalDateTime;
 
 public record TransacaoResponse (
 
-        Long idTransacao,
+        String status,
         BigDecimal valor,
         LocalDateTime dataTransacao,
         Long idContaOrigem,
