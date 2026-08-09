@@ -15,25 +15,24 @@ import org.springframework.web.bind.annotation.*;
 public class Clientes {
 
 
-    private final PessoaFisicaService pessoaService; // Injeto a Service (marcada como final)
+    private final PessoaFisicaService pessoaService;
 
     @PostMapping
     public ResponseEntity<PessoaFisicaResponse> cadastrar(@Valid @RequestBody PessoaFisicaRequest request) {
-        // Chamo a Service para salvar no banco e recebe o Response real
         PessoaFisicaResponse response = pessoaService.cadastrarPessoa(request);
         return ResponseEntity.status(HttpStatus.CREATED).body(response);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<PessoaFisicaResponse> atualizar(@PathVariable Long id, @Valid @RequestBody PessoaFisicaRequest request) { // Capturo o ID que veio na URL
+    public ResponseEntity<PessoaFisicaResponse> atualizar(@PathVariable Long id, @Valid @RequestBody PessoaFisicaRequest request) {
         PessoaFisicaResponse response = pessoaService.atualizarPessoa(id, request);
-        return ResponseEntity.ok(response); // Retorno HTTP 200 OK com os dados atualizados
+        return ResponseEntity.ok(response);
     }
 
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deletar(@PathVariable Long id) {
         pessoaService.deletarPessoa(id);
-        return ResponseEntity.noContent().build(); // Retorno HTTP 204 No Content (padrão para exclusão com sucesso)
+        return ResponseEntity.noContent().build();
     }
 
     @GetMapping("/{id}")

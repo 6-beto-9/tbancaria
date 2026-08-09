@@ -3,7 +3,6 @@ package com.java360.tbancaria.core.Transacao.controller;
 import  com.java360.tbancaria.core.Transacao.dtos.TransacaoRequest;
 import com.java360.tbancaria.core.Transacao.dtos.TransacaoResponse;
 import com.java360.tbancaria.core.Transacao.service.TransacaoService;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 

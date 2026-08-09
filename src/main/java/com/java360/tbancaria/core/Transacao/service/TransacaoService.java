@@ -22,32 +22,26 @@ public class TransacaoService {
 
     @Transactional
     public TransacaoResponse realizarTransacao(TransacaoRequest request) {
-        // Valido valor da transferência
         if (request.valor() == null || request.valor().compareTo(BigDecimal.ZERO) <= 0) {
             throw new RuntimeException("O valor da transferência deve ser maior que zero.");
         }
 
-        // Busco contas de origem e destino
         Conta contaOrigem = contaRepository.findById(request.idContaOrigem())
                 .orElseThrow(() -> new RuntimeException("Conta de origem não encontrada."));
 
         Conta contaDestino = contaRepository.findById(request.idContaDestino())
                 .orElseThrow(() -> new RuntimeException("Conta de destino não encontrada."));
 
-        // Valido se há saldo suficiente
         if (contaOrigem.getSaldo().compareTo(request.valor()) < 0) {
             throw new RuntimeException("Saldo insuficiente para realizar a transferência.");
         }
 
-        // Efetuo o débito e o crédito
         contaOrigem.setSaldo(contaOrigem.getSaldo().subtract(request.valor()));
         contaDestino.setSaldo(contaDestino.getSaldo().add(request.valor()));
 
-        // Salvo as contas no banco de dados
         contaRepository.save(contaOrigem);
         contaRepository.save(contaDestino);
 
-        // Retorno o comprovante (Response DTO)
         return new TransacaoResponse(
                 "SUCESSO",
                 request.valor(),
